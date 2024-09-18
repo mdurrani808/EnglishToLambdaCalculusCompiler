@@ -1,6 +1,0 @@
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Start test public:0:public_lex_lambda.
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Test public:0:public_lex_lambda is successful.
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: End test public:0:public_lex_lambda.
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Start test public:2:public_parse_lambda.
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Test public:2:public_parse_lambda is successful.
-2023-11-16T02:40:25+00:00 MDXPS139380#01 I: End test public:2:public_parse_lambda.
