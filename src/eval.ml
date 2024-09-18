@@ -1,26 +1,30 @@
 open LccTypes 
 
+(* Counter for generating fresh variable names *)
 let cntr = ref (-1)
 
+(* Generate a fresh integer for variable names *)
 let fresh () =
   cntr := !cntr + 1 ;
   !cntr
 
+(* Look up a variable in the environment *)
 let rec lookup env var = match env with 
   [] -> None
-  |(v,e)::t -> if v = var then e else lookup t var;;
+  |(v,e)::t -> if v = var then e else lookup t var
+
+(* Substitute a new variable for an old one in an expression *)
 let rec substitute expr old_var new_var = match expr with
   | Var v -> if v = old_var then new_var else Var v
   | Func (v, body) ->
     if v = old_var then
-      Func (v, body)  
+      Func (v, body)  (* Don't substitute in the body if the variable is shadowed *)
     else
       Func (v, substitute body old_var new_var) 
   | Application (func, arg) ->
     Application (substitute func old_var new_var, substitute arg old_var new_var)
 
-
-
+(* Helper function for alpha conversion *)
 let rec alpha_convert_help e = match e with
   | Var(a) -> Var(a)
   | Func(a, b) -> 
@@ -29,11 +33,12 @@ let rec alpha_convert_help e = match e with
   | Application(a, b) -> Application(alpha_convert_help a, alpha_convert_help b)
   | _ -> e
 
+(* Perform alpha conversion on an expression *)
 let alpha_convert e =
   cntr := -1;
   alpha_convert_help e
-    
 
+(* Check if two expressions are alpha-equivalent *)
 let rec isalpha e1 e2 = match (e1, e2) with
     | (Var v1, Var v2) -> v1 = v2
     | (Func (v1, body1), Func (v2, body2)) ->
@@ -44,14 +49,13 @@ let rec isalpha e1 e2 = match (e1, e2) with
     | (Application (func1, arg1), Application (func2, arg2)) ->
       isalpha func1 func2 && isalpha arg1 arg2
     | _ -> false
-  
 
-
+(* Apply the environment to an expression *)
 let rec recursive_env env e = match env with 
   | [] -> e
   | (a,Some b)::t -> recursive_env t (substitute e a b)
 
-
+(* Perform a single lazy evaluation step *)
 let rec laze env e =
   match (alpha_convert e) with
   | Application (a, b) ->
@@ -59,57 +63,24 @@ let rec laze env e =
       | (Func (fp1, fp2), b) -> substitute fp2 fp1 b
       | (c, d) -> Application (laze env c, laze env d))
   | _ -> e
-(*let str = "(Lx.(((Ly.y)a)x))" in eager [] (parse_lambda((lex_lambda str)));;*)
 
-  let rec eager env e = match e with 
+(* Perform a single eager evaluation step *)
+let rec eager env e = match e with 
   | Var(a) -> Var(a)
   | Func(a, b) -> let b' = eager env (b) in Func(a, b')
   | Application(a,b) -> (match (a,b) with
     | (Func(a,b), c) -> let c' = eager env c in if not (isalpha c' c) then ((Application(Func(a,b), c'))) else ((substitute b a c))
-
     | (a, b) ->  Application(eager env (a), eager env (b)))
-  | _ -> e;;
+  | _ -> e
 
-  
-  (*let rec eager env e = match e with
-  | Var(a) -> print_endline "1"; Var(a)
-  | Func(a, Application(b,c)) -> print_endline "2";Func(a, eager env (Application(b,c)))
-  (*| Application(Func(a,b), Func(c,d)) -> print_endline "3";Application(Func(a,b),eager env (Func(c,d)))*)
-  | Application(Func(a,b), Var(c)) -> print_endline "4";substitute b a (Var(c))
-  | Application(Func(a,b), c) -> 
-    let c' = eager env c in
-    if not (isalpha c' c) then (
-      print_endline "5";(Application(Func(a,b), c')))
-    else 
-      (print_endline a;(substitute b a c))
-  | Application(Application(a,b), Func(c,d)) -> let c' = eager env (Func(c,d)) in
-    if not (isalpha c' (Func(c,d))) then (
-      print_endline "5";(Application(Application(a,b), eager env (Func(c,d)))))
-    else if (isalpha (Application(a,b)) (eager env (Application(a,b)))) then Application(Application(a,b), Func(c,d)) else (Application(eager env (Application(a,b)), Func(c,d)))
-  | Application(a, b) ->  print_endline "7";Application(a, eager env (b))
-  (*| Application(a, Func(b,c)) -> Application(a, eager env (Func(b,c)))*)
-  | _ -> print_endline "8";e*)
-
-(*let rec eager env e =
-  let a = (alpha_convert e) in
-  let rec eager_help env e_a =
-  match (e_a) with
-  | Application (a, b) ->
-      (match (a, b) with
-      | (Func (fp1, fp2), b) ->
-          if (eager env b) = b then substitute fp2 fp1 b else Application (a, eager env b)
-      | (c, d) -> Application (eager env c, eager env d))
-  | Func (fp, body) -> Func (fp, eager env body) 
-  | _ -> e_a in eager_help env a*)
-
-  (*"((Lx.((x (Lx.(Ly.y))) (Lx.(Ly.x)))) (Lx.(Ly.x)))"*)
+(* Reduce an expression to its normal form *)
 let rec reduce env e = 
   let ea = (alpha_convert e) in
   let rec reduce_help env e = 
     let e' = laze env e in
-    if isalpha e' e then (recursive_env env e') else reduce_help env e' in reduce_help env (ea);;
-  
+    if isalpha e' e then (recursive_env env e') else reduce_help env e' in reduce_help env (ea)
 
+(* Convert English AST to Lambda Calculus string *)
 let rec convert tree = match tree with
 | Bool(true) -> "(Lx.(Ly.x))"
 | Bool(false) -> "(Lx.(Ly.y))"
@@ -117,6 +88,8 @@ let rec convert tree = match tree with
 | Not(a)-> "((Lx.((x (Lx.(Ly.y))) (Lx.(Ly.x)))) "^(convert a)^")"
 | And(a,b)-> "(((Lx.(Ly.((x y) (Lx.(Ly.y))))) "^(convert a)^") "^(convert b)^")"
 | Or(a, b) ->"(((Lx.(Ly.((x (Lx.(Ly.x))) y))) "^(convert a)^") "^(convert b)^")"
+
+(* Convert Lambda Calculus AST to readable English string *)
 let rec readable ast =
   match (alpha_convert ast) with
   |   Application(Func (a,Application (Application (Var b, Func (c, Func (d, Var e))),Func (f, Func (g, Var h)))),i)
@@ -128,15 +101,4 @@ let rec readable ast =
   | Func(_, Func(b, Var(y))) when b = y -> "false"
   | Application(Application(a, b), c) -> 
       "(if " ^ (readable (a)) ^ " then " ^ (readable (b)) ^ " else " ^ (readable (c)) ^ ")"
-  | _ -> "wtf?"
-
-(* let c1 = convert (parse_engl (lex_engl "(false and false) or (if true then true else false)")) in let a1 = parse_lambda(lex_lambda(convert(parse_engl(lex_engl(readable (parse_lambda((lex_lambda c1)))))))) in let a2= parse_lambda((lex_lambda c1)) in isalpha a1 a2;;*)
-
-(*let str = "not true" in readable(reduce [] (parse_lambda 
-                  (lex_lambda(convert (parse_engl (lex_engl str))))));;*)
-(*let str = "not true" in eager [] (parse_lambda (lex_lambda(convert (parse_engl (lex_engl str)))));;*)
-
-(*Application(Func ("2",Application(Application (Var "2",    Func ("5", Func ("6", Var "6"))),   Func ("3", Func ("4", Var "3")))),                 Func ("0", Func ("1", Var "0")));;*)
-
-
-(*Application(Application(Func ("0", Func ("1", Var "0")),Func ("5", Func ("6", Var "6"))), Func ("3", Func ("4", Var "3")))*)
+  | _ -> "Error!"

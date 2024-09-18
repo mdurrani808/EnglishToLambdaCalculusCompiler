@@ -1,5 +1,6 @@
 open LccTypes 
 
+(* Convert a token to its string representation *)
 let string_of_token tok = match tok with 
 | Engl_And -> "And"
 | Engl_EOF -> "EOF"
@@ -12,36 +13,34 @@ let string_of_token tok = match tok with
 | Engl_RParen -> ")"
 | Engl_Then -> "Then"
 | Engl_True -> "True"
-|_-> "didnt mat"
+|_-> "didn't match"
 
+(* Convert a list to a string representation *)
 let rec string_of_list conv lst = 
   match lst with
   | [] -> ""
   | h::[] -> conv h
   | h::t -> (conv h) ^ " " ^ (string_of_list conv t)
 
+(* Match and consume the next token if it matches the expected token *)
 let match_token (toks) (tok) =
   match toks with
   | [] -> raise (Failure("parsing failed"))
   | h::t when h = tok -> t
-  | h::_ -> raise (Failure( 
-      "parsing failed"))
+  | h::_ -> raise (Failure("parsing failed"))
 
-
-
-
+(* Look at the next token without consuming it *)
 let lookahead toks = match toks with
    h::t -> h
   | _ -> raise (Failure("Empty input to lookahead"))
 
-
-(* Write your code below *)
-
+(* Parse a lambda calculus expression *)
 let rec parse_lambda_help toks = 
   let (t,exp) = parse_E toks in 
   if t <> [Lambda_EOF] then raise (Failure("parsing failed")) else
     exp
   
+(* Parse an expression (E) *)
 and parse_E toks =
   match toks with 
   | Lambda_Var(a)::t -> (t, Var(a)) 
@@ -59,13 +58,15 @@ and parse_E toks =
           let (t2, exp2) = parse_E t1 in 
           let toks = match_token t2 Lambda_RParen in (toks, Application(exp, exp2)) 
                                                          
-let parse_lambda toks = parse_lambda_help toks;;
+let parse_lambda toks = parse_lambda_help toks
 
-
+(* Parse an English expression *)
 let rec parse_engl_help toks =
   let (t,exp) = parse_C toks in 
   if t <> [Engl_EOF] then raise (Failure("parsing failed")) else 
     exp 
+
+(* Parse a conditional expression (C) *)
 and parse_C toks =
   match lookahead toks with
   | Engl_If -> let toks = match_token toks Engl_If in 
@@ -76,21 +77,24 @@ and parse_C toks =
                let (toks, e3) = parse_C toks in 
                (toks, If(e1, e2, e3))
   | _ -> parse_H toks 
+
+(* Parse a binary operation (H) *)
 and parse_H toks = match parse_U toks with 
   | (a,b) -> match lookahead a with 
     | Engl_And -> let toks = match_token a Engl_And in let (c,d) = parse_H toks in (c, And(b,d))
     | Engl_Or -> let toks = match_token a Engl_Or in let (c,d) = parse_H toks in (c, Or(b,d))
     | _ -> (a,b)
+
+(* Parse a unary operation (U) *)
 and parse_U toks = match lookahead toks with 
   | Engl_Not -> let toks = match_token toks Engl_Not in let (toks,exp) = parse_U toks in (toks, Not(exp))
   | _ -> parse_M toks
 
+(* Parse a basic expression (M) *)
 and parse_M toks = match lookahead toks with 
   | Engl_True -> let toks = match_token toks Engl_True in (toks, Bool(true))
   | Engl_False -> let toks = match_token toks Engl_False in (toks, Bool(false))
   | Engl_LParen -> let toks = match_token toks Engl_LParen in let (toks, exp) = parse_C toks in let toks = match_token toks Engl_RParen in (toks, exp)
   |_-> raise (Failure("parsing failed"))
 
-  let parse_engl toks = parse_engl_help toks;;
-
-
+let parse_engl toks = parse_engl_help toks
