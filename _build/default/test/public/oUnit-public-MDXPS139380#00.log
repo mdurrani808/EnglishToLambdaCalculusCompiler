@@ -1,0 +1,137 @@
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Runner: processes
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Chooser: simple
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration suite_name = "public"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration cache_filename = "/home/mdurrani/cmsc330/project-6-mdurrani808/_build/default/test/public/oUnit-$(suite_name).cache"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration run_gc_full_major = "true"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration display = "true"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration results_style_1_X = "false"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration testdata_dir = "none"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration health_check_interval = "1."
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration verbose = "false"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration chooser = "simple"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration output_html_dir = "none"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration processes_kill_period = "5."
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration runner = "processes"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration shards = "2"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration processes_grace_period = "5."
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration log_encoding = "utf-8"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration output_junit_file = "none"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration ci = "false"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Configuration output_file = "/home/mdurrani/cmsc330/project-6-mdurrani808/_build/default/test/public/oUnit-$(suite_name)-$(shard_id).log"
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Using 2 workers maximum.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Starting worker number MDXPS139380#01.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Worker MDXPS139380#01 started.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Starting worker number MDXPS139380#02.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Worker MDXPS139380#02 started.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:1:public_lex_engl, public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:1:public_lex_engl, public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Start test public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:1:public_lex_engl, public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Test public:0:public_lex_lambda is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:1:public_lex_engl, public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: End test public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:1:public_lex_engl, public:0:public_lex_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:2:public_parse_lambda, public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Start test public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:2:public_parse_lambda, public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:1:public_lex_engl is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:2:public_parse_lambda, public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:2:public_parse_lambda, public:1:public_lex_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:3:public_parse_engl, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:3:public_parse_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:3:public_parse_engl, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:3:public_parse_engl is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:3:public_parse_engl, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:3:public_parse_engl.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:3:public_parse_engl, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:4:public_reduce, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:4:public_reduce.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:4:public_reduce, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:4:public_reduce is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:4:public_reduce, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:4:public_reduce.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:4:public_reduce, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:5:public_laze, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:5:public_laze.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:5:public_laze, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:5:public_laze is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:5:public_laze, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:5:public_laze.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:5:public_laze, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:6:public_eager, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:6:public_eager.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:6:public_eager, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:6:public_eager is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:6:public_eager, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:6:public_eager.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:6:public_eager, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:7:public_isalpha, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:7:public_isalpha.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:7:public_isalpha, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:7:public_isalpha is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:7:public_isalpha, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:7:public_isalpha.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:7:public_isalpha, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:8:public_convert, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:8:public_convert.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:8:public_convert, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: Test public:2:public_parse_lambda is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:8:public_convert, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:8:public_convert is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:8:public_convert, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:8:public_convert.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:8:public_convert, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:9:public_readable, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:9:public_readable.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:9:public_readable, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:9:public_readable is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:9:public_readable, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:9:public_readable.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:9:public_readable, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 2 tests running : public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Start test public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 2 tests running : public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#01 I: End test public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 2 tests running : public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: Test public:10:public_test_all is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 2 tests running : public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 2 tests running: public:10:public_test_all, public:2:public_parse_lambda.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 1 tests running : public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 1 tests running: public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#02 I: End test public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Still 1 tests running : public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 1 tests running: public:10:public_test_all.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: 0 tests running: .
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Worker MDXPS139380#02 has ended.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Worker MDXPS139380#01 died unexpectedly.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Used 2 worker during test execution.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Run 9 tests with shard MDXPS139380#02.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Run 2 tests with shard MDXPS139380#01.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Check health of shard MDXPS139380#02, 1 times.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Check health of shard MDXPS139380#01, 4 times.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: ==============
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Summary:
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:10:public_test_all is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:2:public_parse_lambda is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:9:public_readable is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:8:public_convert is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:7:public_isalpha is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:6:public_eager is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:5:public_laze is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:4:public_reduce is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:3:public_parse_engl is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:1:public_lex_engl is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Test public:0:public_lex_lambda is successful.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Ran: 11 tests in: 0.11 seconds.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Cases: 11.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Tried: 11.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Errors: 0.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Failures: 0.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Skip: 0.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Todo: 0.
+2023-11-16T02:40:25+00:00 MDXPS139380#00 I: Timeout: 0.
